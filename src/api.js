@@ -1,22 +1,33 @@
 import { teams } from "./teams";
 import { players } from "./players";
 
-const buildAPI = (data, path) => {
-  const express = require("express");
-  const serverless = require("serverless-http");
 
-  const app = express();
-  const router = express.Router();
+const express = require("express");
+const serverless = require("serverless-http");
 
-  router.get("/", (req, res) => {
-    res.json(data);
-  });
+const app = express();
+const router = express.Router();
 
-  app.use(`/.netlify/functions/api/${path}`, router);
+router.get("/", (req, res) => {
+  res.json(teams);
+});
 
-  module.exports = app;
-  module.exports.handler = serverless(app);
-}
+app.use(`/.netlify/functions/api/teams`, router);
 
-buildAPI(teams, "/teams")
-buildAPI(players, "/players")
+module.exports = app;
+module.exports.handler = serverless(app);
+
+
+ ////////////////////////////////////////////////////////////////////// 
+
+const app2 = express();
+const router2 = express.Router();
+
+router2.get("/", (req, res) => {
+  res.json(players);
+});
+
+app2.use(`/.netlify/functions/api/players`, router2);
+
+module.exports = app2;
+module.exports.handler = serverless(app2);

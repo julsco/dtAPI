@@ -89,9 +89,12 @@ router.get("/", (req, res) => {
   ]);
 });
 
-app.use(`/.netlify/functions/api/teams`, router);
+const app2 = express();
+const router2 = express.Router();
 
-router.get("/", (req, res) => {
+app2.use(`/.netlify/functions/api/teams`, router2);
+
+router2.get("/", (req, res) => {
   res.json([
     {
       "fullName": "Aaron Ramsdale",

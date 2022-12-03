@@ -4,7 +4,7 @@ const serverless = require("serverless-http");
 const app = express();
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/teams", (req, res) => {
   res.json([
     {
       "name": "Arsenal",
@@ -89,18 +89,7 @@ router.get("/", (req, res) => {
   ]);
 });
 
-app.use(`/.netlify/functions/api/teams`, router);
-
-module.exports = app;
-module.exports.handler = serverless(app);
-
-
-/*  ////////////////////////////////////////////////////////////////////// 
-
-const app2 = express();
-const router2 = express.Router();
-
-router2.get("/", (req, res) => {
+router.get("/players", (req, res) => {
   res.json([
     {
       "fullName": "Aaron Ramsdale",
@@ -4634,7 +4623,10 @@ router2.get("/", (req, res) => {
   ]);
 });
 
-app2.use(`/.netlify/functions/api/players`, router2);
+app.use(`/.netlify/functions/api`, router);
 
-module.exports = app2;
-module.exports.handler = serverless(app2); */
+module.exports = app;
+module.exports.handler = serverless(app);
+
+ 
+

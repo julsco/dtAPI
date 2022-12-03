@@ -1,5 +1,5 @@
-import { teams } from "./teams";
-import { players } from "./players";
+import teams from "./teams";
+import players from "./players";
 
 
 const express = require("express");

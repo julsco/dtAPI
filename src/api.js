@@ -92,7 +92,7 @@ router.get("/", (req, res) => {
 const app2 = express();
 const router2 = express.Router();
 
-app2.use(`/.netlify/functions/api/players`, router);
+app2.use(`/.netlify/functions/api/players`, router2);
 
 router2.get("/", (req, res) => {
   res.json([

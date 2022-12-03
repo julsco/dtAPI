@@ -89,17 +89,10 @@ router.get("/", (req, res) => {
   ]);
 });
 
-module.exports = app;
-module.exports.handler = serverless(app);
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 const app2 = express();
 const router2 = express.Router();
 
-app2.use(`/.netlify/functions/api/players`, router2);
+app2.use(`/.netlify/functions/api/players`, router);
 
 router2.get("/", (req, res) => {
   res.json([
@@ -4636,6 +4629,9 @@ router2.get("/", (req, res) => {
 });
 
 app.use(`/.netlify/functions/api/teams`, router);
+
+module.exports = app;
+module.exports.handler = serverless(app);
 
 module.exports = app2;
 module.exports.handler = serverless(app2);

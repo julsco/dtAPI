@@ -95,7 +95,7 @@ module.exports = app;
 module.exports.handler = serverless(app);
 
 
- ////////////////////////////////////////////////////////////////////// 
+/*  ////////////////////////////////////////////////////////////////////// 
 
 const app2 = express();
 const router2 = express.Router();
@@ -4637,4 +4637,4 @@ router2.get("/", (req, res) => {
 app2.use(`/.netlify/functions/api/players`, router2);
 
 module.exports = app2;
-module.exports.handler = serverless(app2);
+module.exports.handler = serverless(app2); */

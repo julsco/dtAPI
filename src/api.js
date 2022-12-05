@@ -4625,21 +4625,21 @@ router.get("/players", (req, res) => {
   ]);
 });
 
-app.use(`/.netlify/functions/api`, router);
 
 router.get("/", (req, res) => {
   const filters = req.query;
-        const filteredUsers = players.filter(player => {
-          let isValid = true;
-          for (key in filters) {
-            isValid = isValid && player[key].toLowerCase().includes(filters[key].toLowerCase());
-          }
-          return isValid;
-        });
+  const filteredUsers = players.filter(player => {
+    let isValid = true;
+    for (key in filters) {
+      isValid = isValid && player[key].toLowerCase().includes(filters[key].toLowerCase());
+    }
+    return isValid;
+  });
   res.json(filteredUsers);
 });
 
-app.use(`/.netlify/functions/api/search`, router);
+
+app.use(`/.netlify/functions/api`, router);
 
 module.exports = app;
 module.exports.handler = serverless(app);

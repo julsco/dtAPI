@@ -4626,7 +4626,7 @@ router.get("/players", (req, res) => {
 });
 
 
-router.get("/", (req, res) => {
+router.get("/search", (req, res) => {
   const filters = req.query;
   const filteredUsers = players.filter(player => {
     let isValid = true;

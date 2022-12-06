@@ -4647,7 +4647,9 @@ router.get("/search", (req, res) => {
 });
 
 
-app.use(cors(corsOptions)`/.netlify/functions/api`, router);
+app.use(`/.netlify/functions/api`, router);
+app.use(cors(corsOptions));
+
 
 module.exports = app;
 module.exports.handler = serverless(app);

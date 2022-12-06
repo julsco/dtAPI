@@ -4530,13 +4530,6 @@ const players = [
   }
 ]
 
-const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
-
 
 const express = require("express");
 const serverless = require("serverless-http");
@@ -4648,7 +4641,6 @@ router.get("/search", (req, res) => {
 
 
 app.use(`/.netlify/functions/api`, router);
-app.use(cors(corsOptions));
 
 
 module.exports = app;

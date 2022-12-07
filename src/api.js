@@ -4537,6 +4537,7 @@ const app = express();
 const router = express.Router();
 
 router.get("/teams", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   res.json([
     {
       "name": "Arsenal",
@@ -4622,11 +4623,13 @@ router.get("/teams", (req, res) => {
 });
 
 router.get("/players", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   res.json(players);
 });
 
 
 router.get("/search", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const filters = req.query;
   const filteredUsers = players.filter(player => {
     let isValid = true;
@@ -4641,12 +4644,6 @@ router.get("/search", (req, res) => {
 
 app.use(`/.netlify/functions/api`, router);
 
-
-var corsOptions = {
-  origin: "https://d-team.netlify.app/.netlify/functions/api"
-};
-
-app.use(cors(corsOptions));
 
 module.exports = app;
 module.exports.handler = serverless(app);

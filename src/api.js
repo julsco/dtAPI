@@ -4530,7 +4530,6 @@ const players = [
   }
 ]
 
-
 const express = require("express");
 const serverless = require("serverless-http");
 
@@ -4642,6 +4641,12 @@ router.get("/search", (req, res) => {
 
 app.use(`/.netlify/functions/api`, router);
 
+
+var corsOptions = {
+  origin: "https://d-team.netlify.app/.netlify/functions/api"
+};
+
+app.use(cors(corsOptions));
 
 module.exports = app;
 module.exports.handler = serverless(app);
